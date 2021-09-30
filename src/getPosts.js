@@ -12,7 +12,16 @@ const getPosts = async (subreddit, before) => {
   if (response.statusCode !== 200) {
     throw Error(response.statusMessage);
   }
-  return JSON.parse(response.body);
+  const content = JSON.parse(response.body);
+  if (
+    content.data.children.length === 0 ||
+    content.data.children[0].kind !== "t3"
+  ) {
+    throw new Error(
+      "You either did not enter an existing subreddit, or the subreddit doesnt have any posts!"
+    );
+  }
+  return content;
 };
 
 module.exports.getPosts = getPosts;

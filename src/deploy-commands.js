@@ -6,6 +6,8 @@ const { clientId, guildId, token } = require("../config.json");
 const commands = [];
 
 commands.push(require("./register_commands/subscribe"));
+commands.push(require("./register_commands/unsubscribe"));
+commands.push(require("./register_commands/list"));
 
 const rest = new REST({ version: "9" }).setToken(token);
 
