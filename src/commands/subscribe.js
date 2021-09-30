@@ -1,31 +1,26 @@
-const mongoose = require("mongoose");
-
+const { Command } = require("../db");
 const { getPosts } = require("../getPosts");
 
-async function dbConnect() {
-  await mongoose.connect("");
-
-  const commandSchema = new mongoose.Schema({
-    subreddit: String,
-    userId: String,
-    channelId: String,
-    guildId: String,
-    lastShownPost: String,
-  });
-  const Command = mongoose.model("Command", commandSchema);
-  return Command;
-}
 const subscribe = async (subreddit, channelId, guildId, userId) => {
   const newestPost = await getPosts(subreddit);
 
-  /* const Command = dbConnect();
+  const prevCommand = await Command.findOne({
+    subreddit,
+    channelId,
+    guildId,
+  });
+  if (prevCommand) {
+    throw new Error(`This Channel already subscribed to ${subreddit}!`);
+  }
   const commandInstance = new Command({
     subreddit,
     userId,
     channelId,
     guildId,
-    lastShownPost: newestPost.content.data.children[0].name,
-  }); */
+    lastShownPost: newestPost.data.children[0].data.name,
+  });
+  await commandInstance.save();
+
   return newestPost.data.children[0].data;
 };
 

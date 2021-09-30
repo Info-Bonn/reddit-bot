@@ -40,6 +40,52 @@ client.on("interactionCreate", async (interaction) => {
       }
       break;
     }
+    case "unsubscribe": {
+      await interaction.deferReply({ ephemeral: true });
+      const subreddit = interaction.options.getString("subreddit");
+      try {
+        const exampleEmbed = buildEmbed(
+          await subscribe(
+            subreddit,
+            interaction.channelId,
+            interaction.guildId,
+            interaction.user.id
+          )
+        );
+        interaction.channel.send({ embeds: [exampleEmbed] });
+        await interaction.editReply(
+          `You successfully subscribed to the subreddit: ${subreddit}, this bot will check it in intervalls and send new Post as messages into this channel.`
+        );
+      } catch (error) {
+        await interaction.editReply(
+          `There was an error while subscribing, here is the error message: ${error}`
+        );
+      }
+      break;
+    }
+    case "list": {
+      await interaction.deferReply({ ephemeral: true });
+      const subreddit = interaction.options.getString("subreddit");
+      try {
+        const exampleEmbed = buildEmbed(
+          await subscribe(
+            subreddit,
+            interaction.channelId,
+            interaction.guildId,
+            interaction.user.id
+          )
+        );
+        interaction.channel.send({ embeds: [exampleEmbed] });
+        await interaction.editReply(
+          `You successfully subscribed to the subreddit: ${subreddit}, this bot will check it in intervalls and send new Post as messages into this channel.`
+        );
+      } catch (error) {
+        await interaction.editReply(
+          `There was an error while subscribing, here is the error message: ${error}`
+        );
+      }
+      break;
+    }
     default:
       break;
   }
