@@ -46,8 +46,7 @@ async function sendPosts(subscription, client) {
   updateCommand.lastShownPost = newPosts.data.children[0].data.name;
   await updateCommand.save();
 }
-
-const sendUpdates = async (client) => {
+async function sendAllPosts(client) {
   const commands = await Command.find();
   if (!commands) {
     return;
@@ -57,6 +56,10 @@ const sendUpdates = async (client) => {
     results.push(sendPosts(commands[index], client));
   }
   await Promise.all(results);
+}
+
+const sendUpdates = (client) => {
+  sendAllPosts(client);
 };
 
 module.exports.sendUpdates = sendUpdates;

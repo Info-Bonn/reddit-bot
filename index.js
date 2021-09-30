@@ -14,7 +14,10 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
   console.log("Ready!");
-  setInterval(sendUpdates(client), 7200000);
+  sendUpdates(client);
+  setInterval(() => {
+    sendUpdates(client);
+  }, 7200000);
 });
 
 client.on("interactionCreate", async (interaction) => {
