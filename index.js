@@ -5,8 +5,6 @@ const { unsubscribe } = require("./src/commands/unsubscribe");
 const { list } = require("./src/commands/list");
 const { sendUpdates } = require("./src/sendUpdates");
 
-const { token } = require("./config.json");
-
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -55,7 +53,7 @@ client.on("interactionCreate", async (interaction) => {
       } catch (error) {
         // forwards errors to the user
         await interaction.editReply(
-          `There was an error while subscribing, here is the error message: ${error}`
+          `There was an error, here is the error message: ${error}`
         );
       }
       break;
@@ -80,7 +78,7 @@ client.on("interactionCreate", async (interaction) => {
       } catch (error) {
         // forwards errors to the user
         await interaction.editReply(
-          `There was an error while unsubscribing, here is the error message: ${error}`
+          `There was an error, here is the error message: ${error}`
         );
       }
       break;
@@ -102,7 +100,7 @@ client.on("interactionCreate", async (interaction) => {
       } catch (error) {
         // forwards errors to the user
         await interaction.editReply(
-          `There was an error while subscribing, here is the error message: ${error}`
+          `There was an error, here is the error message: ${error}`
         );
       }
       break;
@@ -114,4 +112,4 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 // Login to Discord with your client's token
-client.login(token);
+client.login(process.env.TOKEN);

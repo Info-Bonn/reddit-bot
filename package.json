@@ -4,7 +4,7 @@
   "description": "A bot that sends new post from a specified subreddit into a channel that can be choosen in Discord.",
   "main": "index.js",
   "scripts": {},
-  "author": "Knniff",
+  "author": "Finn Kalvelage",
   "license": "MIT",
   "dependencies": {
     "@discordjs/builders": "^0.5.0",

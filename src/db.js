@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 
 // connect to the db
-mongoose.connect(
-  "mongodb://localhost:27017/redditbot?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.DBCONNECT, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 // setup the subscription schema
 const commandSchema = new mongoose.Schema({
   subreddit: String,

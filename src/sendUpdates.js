@@ -19,6 +19,10 @@ async function sendPosts(subscription, client) {
     // brakes out of the function early because there were no new posts
     return;
   }
+  if (newPosts.data.children.length === 0) {
+    console.log("Weird 0 length Error");
+    return;
+  }
 
   const embedArray = [];
 
@@ -33,9 +37,14 @@ async function sendPosts(subscription, client) {
     arrayHolder.push(embedArray.slice(i, i + size));
   }
   // sends all embeds in the specified channel
-  arrayHolder.forEach((embeds) => {
-    channel.send({ embeds });
-  });
+  try {
+    arrayHolder.forEach((embeds) => {
+      channel.send({ embeds });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
   // }
   // Find the current subreddit in db and update it with the newest lastShownPost
   const updateCommand = await Command.findById(subscription.id);
