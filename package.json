@@ -1,6 +1,6 @@
 {
   "name": "reddit-bot",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A bot that sends new post from a specified subreddit into a channel that can be choosen in Discord.",
   "main": "index.js",
   "scripts": {},
