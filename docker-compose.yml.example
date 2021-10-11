@@ -15,7 +15,7 @@ services:
       - TOKEN=
       - CLIENTID=
       - GUILDID=
-      - DBCONNECT=
+      - DBCONNECT=mongodb://db:27017/redditbot?retryWrites=true&w=majority
 
 volumes:
   db-data:
