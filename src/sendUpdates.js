@@ -15,7 +15,7 @@ async function sendPosts(subscription, client) {
     );
   } catch (error) {
     // getPosts errors if no new Posts have been posted in current subreddit
-    console.log(error);
+    // console.log(error);
     // brakes out of the function early because there were no new posts
     return;
   }

@@ -40,7 +40,7 @@ const getPosts = async (subreddit, before, kind) => {
         content = JSON.parse(response.body);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     // build the url to get everything newer than the last shown post
     myURL = `https://www.reddit.com/r/${subreddit}/${kind}.json?before=${dbPost}&limit=100&raw_json=1`;

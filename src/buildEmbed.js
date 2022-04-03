@@ -7,7 +7,7 @@ const stringIsAValidUrl = (s) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return false;
   }
 };
@@ -21,7 +21,7 @@ const buildEmbed = (content) => {
       url: `https://reddit.com${content.permalink}`,
       author: {
         name: "reddit-bot",
-        icon_url: "https://i.imgur.com/AfFp7pu.png",
+        icon_url: "https://knniff.de/LOGO_DARK_PNG2.png",
         url: "https://knniff.de/reddit-bot",
       },
       description: content.subreddit_name_prefixed,
@@ -40,7 +40,7 @@ const buildEmbed = (content) => {
     url: `https://reddit.com${content.permalink}`,
     author: {
       name: "reddit-bot",
-      icon_url: "https://i.imgur.com/AfFp7pu.png",
+      icon_url: "https://knniff.de/LOGO_DARK_PNG2.png",
       url: "https://knniff.de/reddit-bot",
     },
     description: content.subreddit_name_prefixed,

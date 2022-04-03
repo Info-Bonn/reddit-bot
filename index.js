@@ -21,6 +21,10 @@ client.once("ready", () => {
   }, 300000);
 });
 
+// for "docker stop"
+process.on("SIGTERM", () => {
+  client.destroy();
+});
 // listener for slash commands
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
