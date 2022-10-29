@@ -1,12 +1,14 @@
 // Require the necessary discord.js classes
-const { Client, Intents } = require("discord.js");
+const { Client, GatewayIntentBits } = require("discord.js");
 const { subscribe } = require("./src/commands/subscribe");
 const { unsubscribe } = require("./src/commands/unsubscribe");
 const { list } = require("./src/commands/list");
 const { sendUpdates } = require("./src/sendUpdates");
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds],
+});
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
